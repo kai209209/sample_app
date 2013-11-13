@@ -4,19 +4,17 @@ SampleApp::Application.routes.draw do
         get :following, :followers
       end
     end
-   resources:sessions,only:[:new,:create,:destroy]
-   resources:microposts,only:[:create,:destroy]
-#  get "static_pages/home"
-#  get "static_pages/help"
-#  get "static_pages/about"
-#  get "static_pages/contact"
-  root to:'static_pages#home'
-  match '/help', to:'static_pages#help',via:'get'
-  match '/about', to:'static_pages#about',via:'get'
-  match '/contact', to:'static_pages#contact',via:'get'
-  match '/signup', to:'users#new',via:'get'
-  match '/signin', to:'sessions#new', via:'get'
-  match '/signout', to:'sessions#destroy', via:'delete'
+   resources:sessions, only: [:new,:create,:destroy]
+   resources:microposts, only:[:create,:destroy]
+   resources:relationships, only:[:create,:destroy]
+
+  root to: 'static_pages#home'
+  match '/help', to: 'static_pages#help', via: 'get'
+  match '/about', to: 'static_pages#about', via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/signup', to: 'users#new', via: 'get'
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
 #  match '/edit', to:'users#edit', via:'update'
 
   # The priority is based upon order of creation: first created -> highest priority.
