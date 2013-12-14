@@ -2,18 +2,20 @@
  <% if signed_in? %>
   <div class="row">
    <aside class="span4">
-    <section>
+
+    <div>
       <%= render 'shared/user_info' %>
-    </section>
-    <section>
+    </div>
+    <div>
       <%= render 'shared/stats' %>
-    </section>
-    <section>
+    </div>
+
+    <div>
       <%= render 'shared/micropost_form' %>
-    </section>
+    </div>
    </aside>
-   <div class="span8">
-     <h3>Micropost Feed</h3>
+   <div class="span6">
+     <h4>Micropost Feed</h4>
      <%= render 'shared/feed' %>
    </div>
   </div>
