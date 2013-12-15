@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :pictures
   before_save{self.email=email.downcase}
   before_create :create_remember_token 
   validates:name,presence:true,length:{maximum:50}
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
   def feed
 #    Micropost.where("user_id = ?", id)
     Micropost.from_users_followed_by(self)
+  end
+
+  def feed_picture
+    Picture.where("user_id = ?", id)
   end
   
   def following?(other_user)

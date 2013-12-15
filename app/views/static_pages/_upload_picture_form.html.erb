@@ -1,0 +1,5 @@
+<h4>添加产品图片<small>只识别gif jpg png格式</small></h4>
+<%= form_for(@picture, url: upload_picture_user_path(current_user), html: { multipart: true }) do |f| %>
+  <%= f.file_field :name %>
+  <%= f.submit "确认上传", class: "btn btn-primary" %>
+<% end %>
