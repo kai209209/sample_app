@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20140113091220) do
   add_index "activities", ["trackable_id"], name: "index_activities_on_trackable_id", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
-
   create_table "microposts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"

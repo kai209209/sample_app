@@ -1,8 +1,8 @@
 <div class="center hero-unit">
  <% if signed_in? %>
   <div class="row">
-
-   <aside class="span3">
+   <div class="span3">
+    <div>
       <%= render 'shared/user_info' %>
     </div>
     <div>
@@ -15,12 +15,12 @@
     <div>
       <%= render 'upload_picture_form' %>
     </div>
-   </aside>
+   </div>
    <div class="span6">
      <h3>Micropost Feed</h3>
      <%= render 'shared/feed' %>
    </div>
-  </div>
+   </div>
  <% else %>
   <div class="center hero-unit">
    <h1>Welcome to the Sample App</h1>
