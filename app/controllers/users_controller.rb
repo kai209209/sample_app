@@ -60,6 +60,24 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def upload_picture
+    @picture = current_user.pictures.build(upload_picture_params)
+    if @picture.save
+      flash[:success] = '上传成功！'
+      redirect_to root_path
+    else
+      flash.now[:danger] = '上传失败，请重新上传！'
+      render 'static_pages/home'
+    end
+  end
+
+  def destroy_picture
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    flash[:success] = '删除成功！'
+    redirect_to help_path
+  end
+
   private
      def user_params
        params.require(:user).permit(:name, :email, :password, :password_confirmation)
@@ -72,5 +90,9 @@ class UsersController < ApplicationController
 
      def admin_user
        redirect_to(root_path) unless current_user.admin?
+     end
+
+     def upload_picture_params
+       params.require(:picture).permit(:name)
      end
 end

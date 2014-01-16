@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140113091220) do
   add_index "activities", ["trackable_id"], name: "index_activities_on_trackable_id", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
+
   create_table "microposts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -34,6 +35,17 @@ ActiveRecord::Schema.define(version: 20140113091220) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
+
+  create_table "pictures", force: true do |t|
+    t.string   "name"
+    t.string   "content_type"
+    t.integer  "file_size"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

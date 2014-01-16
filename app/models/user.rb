@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :activities
   before_save { self.email = email.downcase}
+
   before_create :create_remember_token 
   validates :name, presence:true,length:{maximum:50}
    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -24,6 +25,10 @@ class User < ActiveRecord::Base
   def feed
 #    Micropost.where("user_id = ?", id)
     Micropost.from_users_followed_by(self)
+  end
+
+  def feed_picture
+    Picture.where("user_id = ?", id)
   end
   
   def following?(other_user)
