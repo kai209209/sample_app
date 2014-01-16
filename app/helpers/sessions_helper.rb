@@ -25,8 +25,10 @@ module SessionsHelper
   end
 
   def sign_out
+    puts "**************************#{self}"
     self.current_user=nil
     cookies.delete(:remember_token)
+    puts "*************************#{self}"
   end
 
   def redirect_back_or(default)
