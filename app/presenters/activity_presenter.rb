@@ -6,10 +6,14 @@ class ActivityPresenter < SimpleDelegator
     @activity = activity
   end
 
+  def dynamic_class
+    activity.notifications.where(user_id: current_user.id ).first.read ?  "class1" : "class2"
+  end
+
   def render_activity
-    div_for activity do 
-      link_to(activity.user.name, activity.user) + " " + render_partial
-    end
+      div_for(activity, class: dynamic_class) do 
+        link_to(activity.user.name, activity.user) + " " + render_partial
+      end
   end
 
   def render_partial

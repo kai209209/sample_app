@@ -48,10 +48,8 @@ module SessionsHelper
   end
 
   def find_unread_activities
-    if !(current_user.notifications.where(read: false).length == 0)
     count = current_user.notifications.where(read: false).length
-    count
+    count if !(count == 0)
   end
-  end
-end
 
+end
