@@ -5,8 +5,14 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   def track_activity(trackable, action = params[:action])
+    activity = current_user.activities.create! action: action, trackable: trackable   
+    track_notification activity
+  end
+
+  def track_notification(activity)
     current_user.followers.each do |follower|
-    current_user.activities.create! action: action, trackable: trackable, follower_user: follower.id   
+      follower.notifications.create! activity: activity
     end
   end
+
 end

@@ -8,12 +8,8 @@ class ActivityPresenter < SimpleDelegator
 
   def render_activity
     div_for activity do 
-      link_to(activity.user.name, activity.user) + " " + render_partial + " " + link_to(follower.name, follower) + " " + "at #{activity.created_at}"
+      link_to(activity.user.name, activity.user) + " " + render_partial
     end
-  end
-
-  def follower
-    activity.user.followers.select{ |follower| follower[:id] == activity.follower_user }.first
   end
 
   def render_partial

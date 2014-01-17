@@ -46,5 +46,10 @@ module SessionsHelper
       redirect_to signin_path, notice: "Please sign in."
     end
   end
+
+  def find_unread_activities
+    count = current_user.notifications.where(read: false).length
+    count
+  end
 end
 
