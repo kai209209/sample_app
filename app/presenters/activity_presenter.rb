@@ -7,7 +7,11 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def dynamic_class
+<<<<<<< HEAD
     activity.unread current_user
+=======
+    activity.select_class current_user
+>>>>>>> b3c806fafe732e82627da7e6052ac0e9bf5d0837
   end
 
   def render_activity
