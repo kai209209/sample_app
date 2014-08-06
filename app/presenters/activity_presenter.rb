@@ -7,7 +7,7 @@ class ActivityPresenter < SimpleDelegator
   end
 
   def dynamic_class
-    activity.notifications.where(user_id: current_user.id ).first.read ?  "class1" : "class2"
+    activity.unread current_user
   end
 
   def render_activity

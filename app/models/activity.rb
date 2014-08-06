@@ -3,12 +3,19 @@ class Activity < ActiveRecord::Base
   belongs_to :trackable, polymorphic: true
   has_many :notifications
 
-  def self.find_unread_activities current_user
+  def self.find_activities current_user
     activity_ids = current_user.notifications.map(&:activity_id)
-    notifications = current_user.notifications.where(read: false)
-    notifications.update_all(read: true)
     activities = Activity.order("id desc")
     activities = activities.where(id: activity_ids)
     activities
+  end
+
+  def unread current_user
+    unread = notifications.where(user_id: current_user.id ).first
+    if unread.read      
+      "class1" 
+    else
+      "class2"
+    end
   end
 end
