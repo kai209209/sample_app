@@ -1,6 +1,6 @@
-source 'http://ruby.taobao.org'
+source 'https://ruby.taobao.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails'
 gem 'bootstrap-sass','2.3.2.0'
 gem 'bcrypt-ruby','3.0.1'
 gem 'faker','1.1.2'
@@ -11,6 +11,8 @@ gem 'bootstrap-will_paginate', '0.0.9'
 #upload picture
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem 'rqrcode'
 
 group :development, :test do
 #  gem 'sqlite3', '1.3.7'

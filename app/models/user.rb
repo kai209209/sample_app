@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :activities
   has_many :pictures
   has_many :notifications
+  has_many :accounts
   before_save { self.email = email.downcase}
 
   before_create :create_remember_token 
@@ -45,7 +46,10 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
-
+  def self.find_account_money
+    users = self.select("id")
+    users
+  end
 
   private
    

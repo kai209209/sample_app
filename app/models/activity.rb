@@ -9,6 +9,14 @@ class Activity < ActiveRecord::Base
     activities = activities.where(id: activity_ids)
     activities
   end
+<<<<<<< HEAD
+
+  def unread current_user
+    unread = notifications.where(user_id: current_user.id ).first
+    if unread.read      
+      "class1" 
+    else
+=======
  
   def select_class current_user
     notice = notifications.where(user_id: current_user.id ).first
@@ -16,6 +24,7 @@ class Activity < ActiveRecord::Base
       "class1" 
     else
       notice.update(read: true)
+>>>>>>> b3c806fafe732e82627da7e6052ac0e9bf5d0837
       "class2"
     end
   end
